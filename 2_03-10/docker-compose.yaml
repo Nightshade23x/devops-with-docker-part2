@@ -1,0 +1,18 @@
+services:
+  backend:
+    build:
+      context: ..
+      dockerfile: 2_03-10/Dockerfile.backend
+    image: sammy23x/compose-backend:latest
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: 2_03-10/Dockerfile.frontend
+    image: sammy23x/compose-frontend:latest
+    ports:
+      - "5001:5001"
+    depends_on:
+      - backend
