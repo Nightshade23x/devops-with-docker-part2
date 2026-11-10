@@ -51,3 +51,14 @@ services:
       interval: 5s
       timeout: 3s
       retries: 10
+  
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8000:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - frontend
+      - backend
+
