@@ -8,7 +8,7 @@ WORKDIR /app
 
 COPY example-app/frontend/ .
 
-ENV REACT_APP_BACKEND_URL=http://localhost:8080
+ENV REACT_APP_BACKEND_URL=/api
 
 RUN npm install --legacy-peer-deps
 RUN npm run build

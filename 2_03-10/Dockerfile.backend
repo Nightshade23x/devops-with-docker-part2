@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY example-app/backend/ .
 
-ENV REQUEST_ORIGIN=http://localhost:5001
+ENV REQUEST_ORIGIN=http://localhost:8000
 
 RUN go build -o server .
 
