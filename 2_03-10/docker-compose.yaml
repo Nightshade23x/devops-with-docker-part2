@@ -1,21 +1,19 @@
-
 services:
   backend:
     build:
       context: ..
       dockerfile: 2_03-10/Dockerfile.backend
     image: sammy23x/compose-backend:latest
-    
     environment:
       REDIS_HOST: redis
-      POSTGRES_HOST: postgres
+      POSTGRES_HOST: db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DATABASE: postgres
     depends_on:
       redis:
         condition: service_healthy
-      postgres:
+      db:
         condition: service_healthy
     restart: unless-stopped
 
@@ -35,7 +33,7 @@ services:
       timeout: 3s
       retries: 10
 
-  postgres:
+  db:
     image: postgres:18
     volumes:
       - ./database:/var/lib/postgresql
@@ -48,7 +46,7 @@ services:
       interval: 5s
       timeout: 3s
       retries: 10
-  
+
   nginx:
     image: nginx:alpine
     ports:
@@ -58,4 +56,3 @@ services:
     depends_on:
       - frontend
       - backend
-
