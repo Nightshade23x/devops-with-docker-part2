@@ -1,0 +1,7 @@
+services:
+  app:
+    image: sammy23x/docker-basics-samar:latest
+    ports:
+      - "8001:8000"
+    environment:
+      PORT: "8000"
